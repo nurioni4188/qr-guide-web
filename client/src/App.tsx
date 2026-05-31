@@ -3,6 +3,8 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/NotFound";
 import Home from "@/pages/Home";
 import ServiceDetail from "@/pages/ServiceDetail";
+import A4Poster from "@/pages/A4Poster";
+import InternalReport from "@/pages/InternalReport";
 import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
@@ -28,6 +30,8 @@ function Router() {
       <Route path={"/"} component={Home} />
       <Route path={"/guide/:serviceId"} component={ServiceDetail} />
       <Route path={"/service/:serviceId"} component={ServiceDetail} /> {/* 하위호환성 */}
+      <Route path={"/poster/:serviceId"} component={A4Poster} />
+      <Route path={"/report/:serviceId"} component={InternalReport} />
       
       {/* 404 */}
       <Route path={"/404"} component={NotFound} />

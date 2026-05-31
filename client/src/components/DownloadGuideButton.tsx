@@ -215,45 +215,77 @@ export function DownloadGuideButton({
 
           <div className="mb-6">
             <h2 className="text-lg font-bold mb-2">이 민원은 무엇인가요?</h2>
-            <p className="text-sm text-slate-700">{service.whatIsIt}</p>
+            <p className="text-sm text-slate-700">{service.whatIsThis}</p>
           </div>
 
           <div className="mb-6">
-            <h2 className="text-lg font-bold mb-2">방문 전 준비하세요</h2>
-            <p className="text-sm text-slate-700">{service.guidance}</p>
+            <h2 className="text-lg font-bold mb-2">누가 신청하나요?</h2>
+            <p className="text-sm text-slate-700">{service.whoApplies}</p>
           </div>
 
-          <div className="mb-6">
-            <h2 className="text-lg font-bold mb-2">필수 서류</h2>
-            <ul className="text-sm text-slate-700 space-y-1">
-              {service.requiredDocuments.map((doc: string, idx: number) => (
-                <li key={idx}>
-                  {idx + 1}. {doc}
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {service.helpfulDocuments && service.helpfulDocuments.length > 0 && (
+          {service.typicalCases && service.typicalCases.length > 0 && (
             <div className="mb-6">
-              <h2 className="text-lg font-bold mb-2">
-                있으면 도움이 되는 자료
-              </h2>
+              <h2 className="text-lg font-bold mb-2">이런 경우에 신청합니다</h2>
               <ul className="text-sm text-slate-700 space-y-1">
-                {service.helpfulDocuments.map((doc: string, idx: number) => (
-                  <li key={idx}>• {doc}</li>
+                {service.typicalCases.map((caseItem: string, idx: number) => (
+                  <li key={idx}>• {caseItem}</li>
                 ))}
               </ul>
             </div>
           )}
 
           <div className="mb-6">
-            <h2 className="text-lg font-bold mb-2">
-              창구에서 이렇게 말해보세요
-            </h2>
-            <p className="text-sm text-slate-700 bg-blue-50 p-3 rounded">
-              "{service.talkingPoints}"
-            </p>
+            <h2 className="text-lg font-bold mb-2">필수 서류</h2>
+            <ul className="text-sm text-slate-700 space-y-1">
+              {service.preparationMaterials.required.map(
+                (doc: string, idx: number) => (
+                  <li key={idx}>
+                    {idx + 1}. {doc}
+                  </li>
+                )
+              )}
+            </ul>
+          </div>
+
+          {service.preparationMaterials.helpful &&
+            service.preparationMaterials.helpful.length > 0 && (
+              <div className="mb-6">
+                <h2 className="text-lg font-bold mb-2">
+                  있으면 도움이 되는 자료
+                </h2>
+                <ul className="text-sm text-slate-700 space-y-1">
+                  {service.preparationMaterials.helpful.map(
+                    (doc: string, idx: number) => (
+                      <li key={idx}>• {doc}</li>
+                    )
+                  )}
+                </ul>
+              </div>
+            )}
+
+          {service.procedure && service.procedure.length > 0 && (
+            <div className="mb-6">
+              <h2 className="text-lg font-bold mb-2">신청 절차</h2>
+              <ol className="text-sm text-slate-700 space-y-1">
+                {service.procedure.map(
+                  (proc: { step: number; description: string }, idx: number) => (
+                    <li key={idx}>
+                      {proc.step}. {proc.description}
+                    </li>
+                  )
+                )}
+              </ol>
+            </div>
+          )}
+
+          <div className="mb-6">
+            <h2 className="text-lg font-bold mb-2">온라인 신청 안내</h2>
+            <p className="text-sm text-slate-700">{service.onlineInfo}</p>
+          </div>
+
+          <div className="mb-6">
+            <h2 className="text-lg font-bold mb-2">주의사항</h2>
+            <p className="text-sm text-slate-700">{service.cautions}</p>
           </div>
 
           <div className="border-t pt-4">
