@@ -3,7 +3,7 @@ import { Card } from "@/components/ui/card";
 import DocumentList from "@/components/DocumentList";
 import Header from "@/components/Header";
 import InfoBox from "@/components/InfoBox";
-import { SaveGuideButton } from "@/components/SaveGuideButton";
+import { DownloadGuideButton } from "@/components/DownloadGuideButton";
 import { ExternalLink, Loader2, ChevronLeft } from "lucide-react";
 import { useLocation } from "wouter";
 import { trpc } from "@/lib/trpc";
@@ -80,7 +80,7 @@ export default function ServiceDetail({ params }: ServiceDetailProps) {
 
       {/* Main Content */}
       <main className="mx-auto max-w-2xl px-4 py-8 sm:px-6 sm:py-12">
-        {/* What is it? */}
+        {/* 1. 민원 설명 */}
         <Card className="mb-8 border-[1.5px] border-slate-200 bg-white p-5 sm:p-6">
           <h2 className="mb-3 text-lg font-bold text-[#1a2533]">
             이 민원은 무엇인가요?
@@ -90,7 +90,7 @@ export default function ServiceDetail({ params }: ServiceDetailProps) {
           </p>
         </Card>
 
-        {/* Guidance */}
+        {/* 2. 방문 전 준비 */}
         <Card className="mb-8 border-[1.5px] border-slate-200 bg-white p-5 sm:p-6">
           <h2 className="mb-3 text-lg font-bold text-[#1a2533]">
             방문 전 준비하세요
@@ -100,7 +100,59 @@ export default function ServiceDetail({ params }: ServiceDetailProps) {
           </p>
         </Card>
 
-        {/* Action Buttons */}
+        {/* 3. 필수 서류 */}
+        <div className="mb-8">
+          <h2 className="mb-4 text-lg font-bold text-[#1a2533]">필수 서류</h2>
+          <Card className="border-[1.5px] border-slate-200 bg-white p-5 sm:p-6">
+            <ul className="space-y-3">
+              {service.requiredDocuments.map((doc, idx) => (
+                <li key={idx} className="flex gap-3">
+                  <span className="flex-shrink-0 rounded-full bg-[#2d7dd2] text-white w-6 h-6 flex items-center justify-center text-xs font-bold">
+                    {idx + 1}
+                  </span>
+                  <span className="text-sm text-[#1a2533] sm:text-base pt-0.5">
+                    {doc}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </Card>
+        </div>
+
+        {/* 4. 있으면 도움이 되는 자료 */}
+        {service.helpfulDocuments && service.helpfulDocuments.length > 0 && (
+          <div className="mb-8">
+            <h2 className="mb-4 text-lg font-bold text-[#1a2533]">
+              있으면 도움이 되는 자료
+            </h2>
+            <Card className="border-[1.5px] border-slate-200 bg-[#f9fafb] p-5 sm:p-6">
+              <ul className="space-y-2">
+                {service.helpfulDocuments.map((doc, idx) => (
+                  <li key={idx} className="flex gap-2">
+                    <span className="flex-shrink-0 text-[#2d7dd2] font-bold">
+                      •
+                    </span>
+                    <span className="text-sm text-[#607d8b] sm:text-base">
+                      {doc}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </Card>
+          </div>
+        )}
+
+        {/* 5. 창구에서 말할 문장 */}
+        <Card className="mb-8 border-[1.5px] border-slate-200 bg-white p-5 sm:p-6">
+          <h2 className="mb-3 text-lg font-bold text-[#1a2533]">
+            창구에서 이렇게 말해보세요
+          </h2>
+          <p className="rounded-lg bg-[#eaf2fd] p-4 text-sm font-semibold text-[#1a3a5c] sm:text-base">
+            "{service.talkingPoints}"
+          </p>
+        </Card>
+
+        {/* 6. 안내문 저장하기 */}
         <div className="mb-8 flex flex-col gap-3 sm:flex-row">
           {service.onlineLink && (
             <a
@@ -116,49 +168,21 @@ export default function ServiceDetail({ params }: ServiceDetailProps) {
             </a>
           )}
           <div className="flex-1">
-            <SaveGuideButton
+            <DownloadGuideButton
               serviceId={serviceId}
               serviceName={service.name}
-              content={`${service.name}\n\n${service.whatIsIt}\n\n필수 서류:\n${service.documents.join("\n")}\n\n${service.talkingPoints}`}
+              service={service}
             />
           </div>
         </div>
 
-        {/* Documents Section */}
-        <div className="mb-8">
-          <DocumentList documents={service.documents} />
-        </div>
-
-        {/* Talking Points */}
-        <Card className="mb-8 border-[1.5px] border-slate-200 bg-white p-5 sm:p-6">
-          <h2 className="mb-3 text-lg font-bold text-[#1a2533]">
-            창구에서 이렇게 말해보세요
-          </h2>
-          <p className="rounded-lg bg-[#eaf2fd] p-4 text-sm font-semibold text-[#1a3a5c] sm:text-base">
-            "{service.talkingPoints}"
-          </p>
-        </Card>
-
-        {/* Notes */}
-        {service.notes && service.notes.length > 0 && (
-          <div className="mb-8">
-            <InfoBox type="warning" title="유의사항">
-              <ul className="space-y-1">
-                {service.notes.map((note, idx) => (
-                  <li key={idx}>{note}</li>
-                ))}
-              </ul>
-            </InfoBox>
+        {/* 7. 면책 문구 */}
+        <Card className="border-[1.5px] border-amber-200 bg-amber-50 p-5 sm:p-6">
+          <div className="mb-2 text-xs font-bold uppercase tracking-wider text-amber-700">
+            ⚠️ 면책 문구
           </div>
-        )}
-
-        {/* Additional Info */}
-        <Card className="border-[1.5px] border-slate-200 bg-white p-5 sm:p-6">
-          <div className="mb-3 text-xs font-bold uppercase tracking-wider text-[#607d8b]">
-            ℹ️ 공통 안내
-          </div>
-          <p className="text-sm text-[#1a2533]">
-            본 안내는 방문 민원인의 편의를 위한 사전 안내 자료입니다. 실제 처리 가능 여부와 세부 판단은 관련 법령, 제출자료, 담당자 확인에 따라 달라질 수 있습니다.
+          <p className="text-sm text-amber-900 leading-relaxed">
+            {service.disclaimer}
           </p>
         </Card>
       </main>
