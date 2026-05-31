@@ -262,25 +262,7 @@ export default function ServiceDetail({ params }: ServiceDetailProps) {
           </div>
         </div>
 
-        {/* 11. A4 포스터 및 내부 보고서 */}
-        <div className="mb-8 flex flex-col gap-3 sm:flex-row">
-          <Button
-            onClick={() => navigate(`/poster/${serviceId}`)}
-            variant="outline"
-            className="flex-1 gap-2 py-5 text-base font-semibold sm:py-6"
-          >
-            📄 A4 포스터 보기
-          </Button>
-          <Button
-            onClick={() => navigate(`/report/${serviceId}`)}
-            variant="outline"
-            className="flex-1 gap-2 py-5 text-base font-semibold sm:py-6"
-          >
-            📋 내부 보고 요약
-          </Button>
-        </div>
-
-        {/* 12. 면책 문구 */}
+        {/* 11. 면책 문구 */}
         <Card className="border-[1.5px] border-amber-200 bg-amber-50 p-5 sm:p-6">
           <div className="mb-2 text-xs font-bold uppercase tracking-wider text-amber-700">
             ⚠️ 면책 문구

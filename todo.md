@@ -5,9 +5,8 @@
 - [x] 민원 상세 페이지 구현
 - [x] 새로운 데이터 스키마 적용 (title, subtitle, whatIsThis, whoApplies 등)
 - [x] 안내문 다운로드 기능 (PDF, 이미지, 텍스트 복사)
-- [x] A4 포스터 페이지 구현
-- [x] 내부 보고 요약 페이지 구현
-- [x] 라우트 설정 (/, /service/:serviceId, /poster/:serviceId, /report/:serviceId)
+- [x] A4 포스터 페이지 삭제
+- [x] 내부 보고 요약 페이지 삭제
 
 ## 데이터 구조 (완료)
 - [x] 5개 민원 유형 데이터 정의
@@ -20,8 +19,6 @@
 ## 컴포넌트 (완료)
 - [x] Home.tsx - 홈페이지 및 민원 목록
 - [x] ServiceDetail.tsx - 민원 상세 정보
-- [x] A4Poster.tsx - A4 포스터 뷰
-- [x] InternalReport.tsx - 내부 보고 요약
 - [x] DownloadGuideButton.tsx - 안내문 저장 기능
 
 ## 테스트 (완료)
