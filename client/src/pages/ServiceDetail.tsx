@@ -3,6 +3,7 @@ import { Card } from "@/components/ui/card";
 import DocumentList from "@/components/DocumentList";
 import Header from "@/components/Header";
 import InfoBox from "@/components/InfoBox";
+import { SaveGuideButton } from "@/components/SaveGuideButton";
 import { ExternalLink } from "lucide-react";
 import { useLocation } from "wouter";
 
@@ -194,22 +195,29 @@ export default function ServiceDetail() {
           </p>
         </Card>
 
-        {/* Online Link */}
-        {service.onlineLink && (
-          <div className="mb-8">
+        {/* Action Buttons */}
+        <div className="mb-8 flex flex-col gap-3 sm:flex-row">
+          {service.onlineLink && (
             <a
               href={service.onlineLink.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="block"
+              className="flex-1"
             >
               <Button className="w-full gap-2 bg-[#2d7dd2] py-5 text-base font-semibold hover:bg-[#1a5fa8] sm:py-6">
                 {service.onlineLink.text}
                 <ExternalLink className="h-4 w-4" />
               </Button>
             </a>
+          )}
+          <div className="flex-1">
+            <SaveGuideButton
+              serviceId={serviceId}
+              serviceName={service.name}
+              content={`${service.name}\n\n${service.whatIsIt}\n\n필수 서류:\n${service.documents.join("\n")}\n\n${service.talkingPoints}`}
+            />
           </div>
-        )}
+        </div>
 
         {/* Documents Section */}
         <div className="mb-8">
