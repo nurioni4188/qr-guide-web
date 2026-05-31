@@ -8,7 +8,7 @@ describe("guidesRouter", () => {
       const services = await caller.listServices();
 
       expect(services).toBeInstanceOf(Array);
-      expect(services.length).toBe(6);
+      expect(services.length).toBe(5);
 
       // 각 서비스가 필수 필드를 가지고 있는지 확인
       services.forEach((service) => {
@@ -27,11 +27,10 @@ describe("guidesRouter", () => {
       const ids = services.map((s) => s.id);
 
       expect(ids).toContain("workers-compensation");
-      expect(ids).toContain("insured-status");
       expect(ids).toContain("employment-insurance-status");
-      expect(ids).toContain("certificate");
-      expect(ids).toContain("insurance-premium");
-      expect(ids).toContain("online-service");
+      expect(ids).toContain("business-insurance");
+      expect(ids).toContain("visit-checklist");
+      expect(ids).toContain("document-followup");
     });
   });
 
@@ -42,7 +41,7 @@ describe("guidesRouter", () => {
 
       expect(service).toBeDefined();
       expect(service.id).toBe("workers-compensation");
-      expect(service.title).toBe("산재 보상 신청");
+      expect(service.title).toBe("산재보상 신청 안내");
       expect(service).toHaveProperty("whatIsThis");
       expect(service).toHaveProperty("whoApplies");
       expect(service).toHaveProperty("preparationMaterials");
@@ -112,15 +111,14 @@ describe("guidesRouter", () => {
       }
     });
 
-    it("should have all 6 services with complete data", async () => {
+    it("should have all 5 services with complete data", async () => {
       const caller = guidesRouter.createCaller({} as any);
       const serviceIds = [
         "workers-compensation",
-        "insured-status",
         "employment-insurance-status",
-        "certificate",
-        "insurance-premium",
-        "online-service",
+        "business-insurance",
+        "visit-checklist",
+        "document-followup",
       ];
 
       for (const id of serviceIds) {
