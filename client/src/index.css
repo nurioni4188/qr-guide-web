@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=DM+Mono:wght@400;500&display=swap');
 
 @custom-variant dark (&:is(.dark *));
 
@@ -76,6 +77,24 @@
   --sidebar-accent-foreground: oklch(0.141 0.005 285.823);
   --sidebar-border: oklch(0.92 0.004 286.32);
   --sidebar-ring: oklch(0.623 0.214 259.815);
+}
+
+/* QR Guide Custom Colors */
+:root {
+  --qr-primary: #1a3a5c;
+  --qr-accent: #2d7dd2;
+  --qr-accent2: #f0a500;
+  --qr-bg: #f4f6fa;
+  --qr-text: #1a2533;
+  --qr-gray3: #607d8b;
+  --qr-gray2: #b0bec5;
+  --qr-gray1: #e8ecf2;
+  --qr-success: #27ae60;
+  --qr-warning: #e67e22;
+}
+
+body {
+  font-family: 'Noto Sans KR', sans-serif;
 }
 
 .dark {
