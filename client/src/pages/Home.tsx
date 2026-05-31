@@ -1,8 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { ChevronRight, Loader2 } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 import { useLocation } from "wouter";
-import { trpc } from "@/lib/trpc";
 
 interface ServiceType {
   id: string;
@@ -13,61 +12,59 @@ interface ServiceType {
   description: string;
 }
 
-const fallbackServices: ServiceType[] = [
+const services: ServiceType[] = [
   {
     id: "workers-compensation",
-    title: "산재보상 신청 안내",
+    title: "산재 보상 신청",
     subtitle: "업무 중 다치거나 업무로 인해 질병이 발생한 경우",
     badge: "산재보상",
     icon: "🏥",
     description: "산재 보상 신청 관련 서류 및 안내",
   },
   {
-    id: "employment-insurance-status",
-    title: "고용보험 피보험자격 확인청구 안내",
+    id: "insured-status",
+    title: "피보험자격",
     subtitle: "고용보험 취득 또는 상실 여부가 실제 근무사실과 다를 때",
     badge: "피보험자격",
     icon: "👤",
+    description: "피보험자격 관련 서류 및 안내",
+  },
+  {
+    id: "employment-insurance-status",
+    title: "고용보험 피보험자격 확인청구 안내",
+    subtitle: "고용보험 기록이 실제 근무사실과 다를 때",
+    badge: "고용보험",
+    icon: "📋",
     description: "고용보험 피보험자격 확인청구 관련 서류 및 안내",
   },
   {
-    id: "business-insurance",
-    title: "사업장 고용·산재보험 가입 및 변경 안내",
-    subtitle: "사업장 보험관계 성립, 변경, 소멸 등",
-    badge: "사업장보험",
-    icon: "🏢",
-    description: "사업장 고용·산재보험 가입 및 변경 관련 서류 및 안내",
-  },
-  {
-    id: "visit-checklist",
-    title: "지사 방문 전 준비 안내",
-    subtitle: "방문 전 담당 지사, 신분증, 신청서류 확인",
-    badge: "방문준비",
-    icon: "📋",
-    description: "지사 방문 전 준비 관련 안내",
-  },
-  {
-    id: "document-followup",
-    title: "서류 보완 및 처리상태 확인 안내",
-    subtitle: "이미 접수한 민원의 보완 요청, 진행상태 확인",
-    badge: "서류보완",
+    id: "certificate",
+    title: "증명서 발급",
+    subtitle: "각종 증명서 발급이 필요한 경우",
+    badge: "증명서",
     icon: "📄",
-    description: "서류 보완 및 처리상태 확인 관련 안내",
+    description: "증명서 발급 관련 서류 및 안내",
+  },
+  {
+    id: "insurance-premium",
+    title: "보험료 관련",
+    subtitle: "보험료 납입, 조회, 환급 등",
+    badge: "보험료",
+    icon: "💰",
+    description: "보험료 관련 서류 및 안내",
+  },
+  {
+    id: "online-service",
+    title: "온라인 서비스 안내",
+    subtitle: "온라인 신청 및 서비스 이용 방법",
+    badge: "온라인",
+    icon: "🌐",
+    description: "온라인 서비스 이용 방법 안내",
   },
 ];
 
 export default function Home() {
   const [, navigate] = useLocation();
-
-  // tRPC를 통해 서비스 목록 조회
-  const { data: servicesData, isLoading } = trpc.guides.listServices.useQuery(
-    undefined,
-    {
-      staleTime: 1000 * 60 * 5, // 5분
-    }
-  );
-
-  const services = servicesData || fallbackServices;
 
   const handleServiceClick = (serviceId: string) => {
     navigate(`/service/${serviceId}`);
@@ -102,45 +99,36 @@ export default function Home() {
 
       {/* Main Content */}
       <main className="mx-auto max-w-2xl px-4 py-12 sm:px-6 sm:py-16">
-        {/* Loading State */}
-        {isLoading && (
-          <div className="flex justify-center py-12">
-            <Loader2 className="h-8 w-8 animate-spin text-[#2d7dd2]" />
-          </div>
-        )}
-
         {/* Service Grid */}
-        {!isLoading && (
-          <div className="space-y-3">
-            {services.map((service) => (
-              <Card
-                key={service.id}
-                className="group cursor-pointer overflow-hidden border-[1.5px] border-slate-200 transition-all duration-200 hover:border-[#2d7dd2] hover:shadow-lg"
-                onClick={() => handleServiceClick(service.id)}
-              >
-                <div className="flex items-center justify-between p-5 sm:p-6">
-                  <div className="flex flex-1 items-center gap-4">
-                    <div className="text-3xl">{service.icon}</div>
-                    <div className="flex-1 min-w-0">
-                      <div className="mb-1 inline-block rounded-full bg-[#eaf2fd] px-2.5 py-0.5 text-xs font-bold text-[#1a3a5c]">
-                        {service.badge}
-                      </div>
-                      <h3 className="text-base font-bold text-[#1a2533] sm:text-lg">
-                        {service.title}
-                      </h3>
-                      <p className="text-xs text-[#607d8b] sm:text-sm">
-                        {service.subtitle}
-                      </p>
+        <div className="space-y-3">
+          {services.map((service) => (
+            <Card
+              key={service.id}
+              className="group cursor-pointer overflow-hidden border-[1.5px] border-slate-200 transition-all duration-200 hover:border-[#2d7dd2] hover:shadow-lg"
+              onClick={() => handleServiceClick(service.id)}
+            >
+              <div className="flex items-center justify-between p-5 sm:p-6">
+                <div className="flex flex-1 items-center gap-4">
+                  <div className="text-3xl">{service.icon}</div>
+                  <div className="flex-1 min-w-0">
+                    <div className="mb-1 inline-block rounded-full bg-[#eaf2fd] px-2.5 py-0.5 text-xs font-bold text-[#1a3a5c]">
+                      {service.badge}
                     </div>
-                  </div>
-                  <div className="ml-2 flex-shrink-0 text-[#b0bec5] transition-all duration-200 group-hover:translate-x-1 group-hover:text-[#2d7dd2]">
-                    <ChevronRight className="h-5 w-5 sm:h-6 sm:w-6" />
+                    <h3 className="text-base font-bold text-[#1a2533] sm:text-lg">
+                      {service.title}
+                    </h3>
+                    <p className="text-xs text-[#607d8b] sm:text-sm">
+                      {service.subtitle}
+                    </p>
                   </div>
                 </div>
-              </Card>
-            ))}
-          </div>
-        )}
+                <div className="ml-2 flex-shrink-0 text-[#b0bec5] transition-all duration-200 group-hover:translate-x-1 group-hover:text-[#2d7dd2]">
+                  <ChevronRight className="h-5 w-5 sm:h-6 sm:w-6" />
+                </div>
+              </div>
+            </Card>
+          ))}
+        </div>
 
         {/* Footer Info */}
         <div className="mt-12 rounded-lg border border-[#e8ecf2] bg-[#f4f6fa] p-4 sm:p-6">
