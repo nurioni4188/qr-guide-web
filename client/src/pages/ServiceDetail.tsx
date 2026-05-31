@@ -155,17 +155,19 @@ export default function ServiceDetail({ params }: ServiceDetailProps) {
         {/* 6. 안내문 저장하기 */}
         <div className="mb-8 flex flex-col gap-3 sm:flex-row">
           {service.onlineLink && (
-            <a
-              href={service.onlineLink.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex-1"
+            <Button
+              asChild
+              className="flex-1 gap-2 bg-[#2d7dd2] py-5 text-base font-semibold hover:bg-[#1a5fa8] sm:py-6"
             >
-              <Button className="w-full gap-2 bg-[#2d7dd2] py-5 text-base font-semibold hover:bg-[#1a5fa8] sm:py-6">
+              <a
+                href={service.onlineLink.url}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 {service.onlineLink.text}
                 <ExternalLink className="h-4 w-4" />
-              </Button>
-            </a>
+              </a>
+            </Button>
           )}
           <div className="flex-1">
             <DownloadGuideButton
