@@ -1,8 +1,9 @@
-import { useAuth } from "@/_core/hooks/useAuth";
+
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { ChevronRight } from "lucide-react";
+import { ChevronRight, Loader2 } from "lucide-react";
 import { useLocation } from "wouter";
+import { trpc } from "@/lib/trpc";
 
 interface ServiceType {
   id: string;
@@ -12,7 +13,7 @@ interface ServiceType {
   description: string;
 }
 
-const services: ServiceType[] = [
+const fallbackServices: ServiceType[] = [
   {
     id: "workers-compensation",
     name: "산재 보상 신청",
@@ -51,15 +52,22 @@ const services: ServiceType[] = [
 ];
 
 export default function Home() {
-  // The userAuth hooks provides authentication state
-  // To implement login/logout functionality, simply call logout() or redirect to getLoginUrl()
-  let { user, loading, error, isAuthenticated, logout } = useAuth();
-
   const [, navigate] = useLocation();
+  
+  // 백엔드에서 민원 유형 목록 조회
+  const { data: services = fallbackServices, isLoading } = trpc.guides.listServices.useQuery();
 
   const handleServiceClick = (serviceId: string) => {
-    navigate(`/service/${serviceId}`);
+    navigate(`/guide/${serviceId}`);
   };
+
+  if (isLoading) {
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-slate-50">
+        <Loader2 className="h-8 w-8 animate-spin text-[#2d7dd2]" />
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
