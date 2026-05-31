@@ -308,9 +308,8 @@ export const GUIDES_DATA: Record<string, GuideService> = {
     ],
     procedure: [
       { step: 1, description: "근로복지공단 홈페이지 접속" },
-      { step: 2, description: "로그인 또는 회원가입" },
-      { step: 3, description: "원하는 민원 선택" },
-      { step: 4, description: "신청서 작성 및 제출" },
+      { step: 2, description: "원하는 민원 선택" },
+      { step: 3, description: "신청서 작성 및 제출" },
     ],
     onlineInfo: "근로복지공단 홈페이지에서 다양한 온라인 서비스를 이용할 수 있습니다.",
     cautions:

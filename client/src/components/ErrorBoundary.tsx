@@ -31,25 +31,35 @@ class ErrorBoundary extends Component<Props, State> {
               className="text-destructive mb-6 flex-shrink-0"
             />
 
-            <h2 className="text-xl mb-4">An unexpected error occurred.</h2>
+            <h2 className="text-xl mb-4 text-[#1a2533]">페이지를 불러올 수 없습니다.</h2>
 
-            <div className="p-4 w-full rounded bg-muted overflow-auto mb-6">
-              <pre className="text-sm text-muted-foreground whitespace-break-spaces">
-                {this.state.error?.stack}
-              </pre>
+            <p className="text-sm text-[#607d8b] mb-6 text-center">
+              일시적인 오류가 발생했습니다. 페이지를 새로고침하거나 홈으로 돌아가주세요.
+            </p>
+
+            <div className="flex gap-3">
+              <button
+                onClick={() => window.location.reload()}
+                className={cn(
+                  "flex items-center gap-2 px-4 py-2 rounded-lg",
+                  "bg-[#2d7dd2] text-white",
+                  "hover:bg-[#1a5fa8] cursor-pointer"
+                )}
+              >
+                <RotateCcw size={16} />
+                새로고침
+              </button>
+              <button
+                onClick={() => window.location.href = '/'}
+                className={cn(
+                  "flex items-center gap-2 px-4 py-2 rounded-lg",
+                  "bg-slate-200 text-[#1a2533]",
+                  "hover:bg-slate-300 cursor-pointer"
+                )}
+              >
+                홈으로
+              </button>
             </div>
-
-            <button
-              onClick={() => window.location.reload()}
-              className={cn(
-                "flex items-center gap-2 px-4 py-2 rounded-lg",
-                "bg-primary text-primary-foreground",
-                "hover:opacity-90 cursor-pointer"
-              )}
-            >
-              <RotateCcw size={16} />
-              Reload Page
-            </button>
           </div>
         </div>
       );
