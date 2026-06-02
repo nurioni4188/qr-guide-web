@@ -1,5 +1,5 @@
 const COMMON_DISCLAIMER =
-  "본 안내는 방문 전 준비를 돕기 위한 일반 안내입니다. 실제 처리 여부와 결과는 관련 법령, 사실관계, 제출자료, 담당기관 확인에 따라 달라질 수 있습니다. 구체적인 신청 가능 여부는 공식 민원 안내 또는 담당 지사를 통해 확인하시기 바랍니다.";
+  "본 안내는 방문 전 준비를 돕기 위한 참고용입니다. 실제 접수 가능 여부와 추가 제출서류는 개별 사안에 따라 달라질 수 있으므로 최종 확인은 근로복지공단, 고용·산재보험 토탈서비스, 고용24, 정부24 등 공식 경로를 이용해 주세요.";
 
 export interface GuideService {
   id: string;
@@ -89,10 +89,10 @@ export const GUIDES_DATA: Record<string, GuideService> = {
       { step: 6, description: "승인 여부 결정" },
       { step: 7, description: "승인 후 관련 급여 신청" },
     ],
-    onlineInfo: "근로복지공단 홈페이지에서 온라인 신청 가능 여부를 확인하세요.",
+    onlineInfo: "근로복지공단 홈페이지 > 서식자료실 > '요양급여신청서' 검색",
     cautions:
       "산재 승인 여부는 업무관련성, 의학적 소견, 사실관계 확인 등을 종합하여 판단됩니다. 서류가 부족한 경우 추가 제출이 필요할 수 있습니다.",
-    onlineLink: "https://www.kcomwel.or.kr",
+    onlineLink: "https://total.comwel.or.kr/ui/index.do?task=form&formSEQ=6",
     disclaimer: COMMON_DISCLAIMER,
   },
   "insured-status": {
@@ -145,16 +145,16 @@ export const GUIDES_DATA: Record<string, GuideService> = {
       { step: 4, description: "사업장 및 근로자 확인" },
       { step: 5, description: "확인 결과 통보" },
     ],
-    onlineInfo: "고용보험 토탈서비스에서 온라인 확인청구 가능 여부를 확인하세요.",
+    onlineInfo: "고용보험 토탈서비스 > 고용·산재보험 > 피보험자격 확인",
     cautions:
       "고용보험 피보험자격 확인 여부는 실제 근무사실, 임금 지급 내역, 사업장 신고자료 등을 종합하여 판단됩니다.",
-    onlineLink: "https://www.kcomwel.or.kr",
+    onlineLink: "https://www.work24.go.kr",
     disclaimer: COMMON_DISCLAIMER,
   },
   "employment-insurance-status": {
     id: "employment-insurance-status",
     title: "고용보험 피보험자격 확인청구 안내",
-    subtitle: "고용보험 기록이 실제 근무사실과 다를 때",
+    subtitle: "근로자가 본인의 고용보험 이력에 대해 확인을 요청하는 민원입니다",
     badge: "고용보험",
     icon: "📋",
     description: "고용보험 피보험자격 확인청구 관련 서류 및 안내",
@@ -193,10 +193,10 @@ export const GUIDES_DATA: Record<string, GuideService> = {
       { step: 4, description: "사업장 및 근로자 확인" },
       { step: 5, description: "확인 결과 통보" },
     ],
-    onlineInfo: "고용보험 토탈서비스에서 온라인 확인청구 가능 여부를 확인하세요.",
+    onlineInfo: "고용보험 토탈서비스 > 고용·산재보험 > 피보험자격 확인청구",
     cautions:
       "고용보험 피보험자격 확인 여부는 실제 근무사실, 임금 지급 내역, 사업장 신고자료 등을 종합하여 판단됩니다.",
-    onlineLink: "https://www.kcomwel.or.kr",
+    onlineLink: "https://www.work24.go.kr",
     disclaimer: COMMON_DISCLAIMER,
   },
   "certificate": {
@@ -237,10 +237,10 @@ export const GUIDES_DATA: Record<string, GuideService> = {
       { step: 3, description: "방문 또는 온라인 신청" },
       { step: 4, description: "증명서 발급" },
     ],
-    onlineInfo: "많은 증명서가 온라인으로 발급 가능합니다.",
+    onlineInfo: "근로복지공단 홈페이지 > 서식자료실 > 증명서 검색",
     cautions:
       "증명서 발급 시간은 신청 방법과 증명서 종류에 따라 다를 수 있습니다.",
-    onlineLink: "https://www.kcomwel.or.kr",
+    onlineLink: "https://www.comwel.or.kr",
     disclaimer: COMMON_DISCLAIMER,
   },
   "insurance-premium": {
@@ -277,10 +277,10 @@ export const GUIDES_DATA: Record<string, GuideService> = {
       { step: 2, description: "납입 또는 환급 신청" },
       { step: 3, description: "처리" },
     ],
-    onlineInfo: "온라인으로 보험료 조회 및 납입이 가능합니다.",
+    onlineInfo: "정부24 또는 고용·산재보험 토탈서비스에서 온라인 조회 가능",
     cautions:
       "보험료 납입 기한을 놓치지 않도록 주의하세요.",
-    onlineLink: "https://www.kcomwel.or.kr",
+    onlineLink: "https://www.gov.kr",
     disclaimer: COMMON_DISCLAIMER,
   },
   "online-service": {
@@ -314,7 +314,7 @@ export const GUIDES_DATA: Record<string, GuideService> = {
     onlineInfo: "근로복지공단 홈페이지에서 다양한 온라인 서비스를 이용할 수 있습니다.",
     cautions:
       "온라인 신청 시 정확한 정보를 입력하세요.",
-    onlineLink: "https://www.kcomwel.or.kr",
+    onlineLink: "https://www.comwel.or.kr",
     disclaimer: COMMON_DISCLAIMER,
   },
 };

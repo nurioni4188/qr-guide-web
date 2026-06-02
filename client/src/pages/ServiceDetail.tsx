@@ -239,10 +239,10 @@ export default function ServiceDetail({ params }: ServiceDetailProps) {
           </div>
         )}
 
-        {/* 11. 면책 문구 */}
+        {/* 11. 참고 고지문 */}
         <Card className="border-[1.5px] border-amber-200 bg-amber-50 p-5 sm:p-6">
           <div className="mb-2 text-xs font-bold uppercase tracking-wider text-amber-700">
-            ⚠️ 면책 문구
+            📋 참고 고지문
           </div>
           <p className="text-sm text-amber-900 leading-relaxed">
             {service.disclaimer}

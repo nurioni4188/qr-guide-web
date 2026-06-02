@@ -33,7 +33,7 @@ const services: ServiceType[] = [
     id: "employment-insurance-status",
     title: "고용보험 피보험자격 확인청구 안내",
     subtitle: "고용보험 기록이 실제 근무사실과 다를 때",
-    badge: "고용보험",
+    badge: "⚠ 주의",
     icon: "📋",
     description: "고용보험 피보험자격 확인청구 관련 서류 및 안내",
   },
