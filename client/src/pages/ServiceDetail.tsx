@@ -51,17 +51,19 @@ export default function ServiceDetail({ params }: ServiceDetailProps) {
           뒤로가기
         </button>
 
-        {/* 관리자 모드 토글 (개발용) */}
-        <button
-          onClick={() => setIsAdminMode(!isAdminMode)}
-          className={`text-xs font-bold px-2 py-1 rounded transition-all ${
-            isAdminMode
-              ? "bg-[#f0a500] text-white"
-              : "bg-slate-200 text-slate-600 hover:bg-slate-300"
-          }`}
-        >
-          {isAdminMode ? "🔧 관리자" : "👁 공개"}
-        </button>
+        {/* 관리자 모드 토글 (개발 환경에서만 표시) */}
+        {import.meta.env.DEV && (
+          <button
+            onClick={() => setIsAdminMode(!isAdminMode)}
+            className={`text-xs font-bold px-2 py-1 rounded transition-all ${
+              isAdminMode
+                ? "bg-[#f0a500] text-white"
+                : "bg-slate-200 text-slate-600 hover:bg-slate-300"
+            }`}
+          >
+            {isAdminMode ? "🔧 관리자" : "👁 공개"}
+          </button>
+        )}
       </div>
 
       {/* 콘텐츠 */}
