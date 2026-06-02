@@ -92,7 +92,7 @@ export const GUIDES_DATA: Record<string, GuideService> = {
     onlineInfo: "근로복지공단 홈페이지에서 온라인 신청 가능 여부를 확인하세요.",
     cautions:
       "산재 승인 여부는 업무관련성, 의학적 소견, 사실관계 확인 등을 종합하여 판단됩니다. 서류가 부족한 경우 추가 제출이 필요할 수 있습니다.",
-    onlineLink: "https://total.comwel.or.kr/ui/index.do?task=form&formSEQ=6",
+    onlineLink: "https://www.kcomwel.or.kr",
     disclaimer: COMMON_DISCLAIMER,
   },
   "insured-status": {
@@ -148,7 +148,7 @@ export const GUIDES_DATA: Record<string, GuideService> = {
     onlineInfo: "고용보험 토탈서비스에서 온라인 확인청구 가능 여부를 확인하세요.",
     cautions:
       "고용보험 피보험자격 확인 여부는 실제 근무사실, 임금 지급 내역, 사업장 신고자료 등을 종합하여 판단됩니다.",
-    onlineLink: "https://total.comwel.or.kr/ui/index.do?task=form&formSEQ=7",
+    onlineLink: "https://www.kcomwel.or.kr",
     disclaimer: COMMON_DISCLAIMER,
   },
   "employment-insurance-status": {
@@ -196,7 +196,7 @@ export const GUIDES_DATA: Record<string, GuideService> = {
     onlineInfo: "고용보험 토탈서비스에서 온라인 확인청구 가능 여부를 확인하세요.",
     cautions:
       "고용보험 피보험자격 확인 여부는 실제 근무사실, 임금 지급 내역, 사업장 신고자료 등을 종합하여 판단됩니다.",
-    onlineLink: "https://total.comwel.or.kr/ui/index.do?task=form&formSEQ=8",
+    onlineLink: "https://www.kcomwel.or.kr",
     disclaimer: COMMON_DISCLAIMER,
   },
   "certificate": {
@@ -240,7 +240,7 @@ export const GUIDES_DATA: Record<string, GuideService> = {
     onlineInfo: "많은 증명서가 온라인으로 발급 가능합니다.",
     cautions:
       "증명서 발급 시간은 신청 방법과 증명서 종류에 따라 다를 수 있습니다.",
-    onlineLink: "https://total.comwel.or.kr/ui/index.do?task=form&formSEQ=9",
+    onlineLink: "https://www.kcomwel.or.kr",
     disclaimer: COMMON_DISCLAIMER,
   },
   "insurance-premium": {
@@ -280,7 +280,7 @@ export const GUIDES_DATA: Record<string, GuideService> = {
     onlineInfo: "온라인으로 보험료 조회 및 납입이 가능합니다.",
     cautions:
       "보험료 납입 기한을 놓치지 않도록 주의하세요.",
-    onlineLink: "https://total.comwel.or.kr/ui/index.do?task=form&formSEQ=10",
+    onlineLink: "https://www.kcomwel.or.kr",
     disclaimer: COMMON_DISCLAIMER,
   },
   "online-service": {
@@ -314,7 +314,7 @@ export const GUIDES_DATA: Record<string, GuideService> = {
     onlineInfo: "근로복지공단 홈페이지에서 다양한 온라인 서비스를 이용할 수 있습니다.",
     cautions:
       "온라인 신청 시 정확한 정보를 입력하세요.",
-    onlineLink: "https://total.comwel.or.kr/ui/index.do?task=form&formSEQ=11",
+    onlineLink: "https://www.kcomwel.or.kr",
     disclaimer: COMMON_DISCLAIMER,
   },
 };
