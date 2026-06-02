@@ -2,69 +2,34 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { ChevronRight } from "lucide-react";
 import { useLocation } from "wouter";
-
-interface ServiceType {
-  id: string;
-  title: string;
-  subtitle: string;
-  badge: string;
-  icon: string;
-  description: string;
-}
-
-const services: ServiceType[] = [
-  {
-    id: "workers-compensation",
-    title: "산재 보상 신청",
-    subtitle: "업무 중 다치거나 업무로 인해 질병이 발생한 경우",
-    badge: "산재보상",
-    icon: "🏥",
-    description: "산재 보상 신청 관련 서류 및 안내",
-  },
-  {
-    id: "insured-status",
-    title: "피보험자격",
-    subtitle: "고용보험 취득 또는 상실 여부가 실제 근무사실과 다를 때",
-    badge: "피보험자격",
-    icon: "👤",
-    description: "피보험자격 관련 서류 및 안내",
-  },
-  {
-    id: "employment-insurance-status",
-    title: "고용보험 피보험자격 확인청구 안내",
-    subtitle: "고용보험 기록이 실제 근무사실과 다를 때",
-    badge: "고용보험",
-    icon: "📋",
-    description: "고용보험 피보험자격 확인청구 관련 서류 및 안내",
-  },
-  {
-    id: "certificate",
-    title: "증명서 발급",
-    subtitle: "각종 증명서 발급이 필요한 경우",
-    badge: "증명서",
-    icon: "📄",
-    description: "증명서 발급 관련 서류 및 안내",
-  },
-  {
-    id: "insurance-premium",
-    title: "보험료 관련",
-    subtitle: "보험료 납입, 조회, 환급 등",
-    badge: "보험료",
-    icon: "💰",
-    description: "보험료 관련 서류 및 안내",
-  },
-  {
-    id: "online-service",
-    title: "온라인 서비스 안내",
-    subtitle: "온라인 신청 및 서비스 이용 방법",
-    badge: "온라인",
-    icon: "🌐",
-    description: "온라인 서비스 이용 방법 안내",
-  },
-];
+import { FORM_DB } from "@/data/formDB";
 
 export default function Home() {
   const [, navigate] = useLocation();
+
+  // L1 기준으로 그룹화 (중복 제거)
+  const groupedByL1 = FORM_DB.categories.reduce(
+    (acc, category) => {
+      const existing = acc.find((item) => item.l1 === category.l1);
+      if (!existing) {
+        acc.push({
+          l1: category.l1,
+          id: category.id,
+          description: category.description,
+          warning: category.warning,
+          formCount: category.forms.length,
+        });
+      }
+      return acc;
+    },
+    [] as Array<{
+      l1: string;
+      id: string;
+      description?: string;
+      warning?: string;
+      formCount: number;
+    }>
+  );
 
   const handleServiceClick = (serviceId: string) => {
     navigate(`/service/${serviceId}`);
@@ -101,25 +66,33 @@ export default function Home() {
       <main className="mx-auto max-w-2xl px-4 py-12 sm:px-6 sm:py-16">
         {/* Service Grid */}
         <div className="space-y-3">
-          {services.map((service) => (
+          {groupedByL1.map((service) => (
             <Card
               key={service.id}
               className="group cursor-pointer overflow-hidden border-[1.5px] border-slate-200 transition-all duration-200 hover:border-[#2d7dd2] hover:shadow-lg"
               onClick={() => handleServiceClick(service.id)}
             >
               <div className="flex items-center justify-between p-5 sm:p-6">
-                <div className="flex flex-1 items-center gap-4">
-                  <div className="text-3xl">{service.icon}</div>
+                <div className="flex flex-1 items-start gap-4">
                   <div className="flex-1 min-w-0">
-                    <div className="mb-1 inline-block rounded-full bg-[#eaf2fd] px-2.5 py-0.5 text-xs font-bold text-[#1a3a5c]">
-                      {service.badge}
+                    <div className="mb-2 flex flex-wrap items-center gap-2">
+                      <div className="inline-block rounded-full bg-[#eaf2fd] px-2.5 py-0.5 text-xs font-bold text-[#1a3a5c]">
+                        {service.formCount}개 서식
+                      </div>
+                      {service.warning && (
+                        <div className="inline-block rounded-full bg-[#fff8e1] px-2.5 py-0.5 text-xs font-bold text-[#f0a500]">
+                          ⚠ 주의
+                        </div>
+                      )}
                     </div>
                     <h3 className="text-base font-bold text-[#1a2533] sm:text-lg">
-                      {service.title}
+                      {service.l1}
                     </h3>
-                    <p className="text-xs text-[#607d8b] sm:text-sm">
-                      {service.subtitle}
-                    </p>
+                    {service.description && (
+                      <p className="text-xs text-[#607d8b] sm:text-sm">
+                        {service.description}
+                      </p>
+                    )}
                   </div>
                 </div>
                 <div className="ml-2 flex-shrink-0 text-[#b0bec5] transition-all duration-200 group-hover:translate-x-1 group-hover:text-[#2d7dd2]">
@@ -138,15 +111,21 @@ export default function Home() {
           <ul className="space-y-2 text-sm text-[#1a2533]">
             <li className="flex gap-2">
               <span className="flex-shrink-0">✓</span>
-              <span>위 민원 유형을 선택하면 필수 서류 목록을 확인할 수 있습니다.</span>
+              <span>위 민원 유형을 선택하면 필요한 서류 목록을 확인할 수 있습니다.</span>
             </li>
             <li className="flex gap-2">
               <span className="flex-shrink-0">✓</span>
-              <span>각 페이지에서 온라인 신청 링크를 제공합니다.</span>
+              <span>각 서식별로 온라인 신청, 서식 확인, 법정서식 보기 링크를 제공합니다.</span>
             </li>
             <li className="flex gap-2">
               <span className="flex-shrink-0">✓</span>
               <span>대리 신청 시 필요한 서류는 담당 창구에 확인해 주세요.</span>
+            </li>
+            <li className="flex gap-2">
+              <span className="flex-shrink-0">✓</span>
+              <span>
+                온라인 신청이 불가능한 경우 지사 방문 시 안내받을 수 있습니다.
+              </span>
             </li>
           </ul>
         </div>
