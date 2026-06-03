@@ -220,24 +220,61 @@ export default function ServiceDetail({ params }: ServiceDetailProps) {
           </p>
         </Card>
 
-        {/* 10. 온라인 바로가기 */}
-        {service.onlineLink && (
-          <div className="mb-8">
+        {/* 10. 버튼 영역 */}
+        <div className="mb-8 grid grid-cols-1 gap-3 sm:grid-cols-3">
+          {/* 온라인 신청 바로가기 - 파란색 채움 */}
+          {service.onlineLink && (
             <Button
               asChild
-              className="w-full gap-2 bg-[#2d7dd2] py-5 text-base font-semibold hover:bg-[#1a5fa8] sm:py-6"
+              className="gap-2 bg-[#2d7dd2] py-4 text-sm font-semibold hover:bg-[#1a5fa8] sm:py-5 sm:text-base"
             >
               <a
                 href={service.onlineLink}
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                온라인 확인 바로가기
+                온라인 신청
                 <ExternalLink className="h-4 w-4" />
               </a>
             </Button>
-          </div>
-        )}
+          )}
+
+          {/* 서식 확인 - 노란색 테두리 */}
+          {service.formCheckUrl && (
+            <Button
+              asChild
+              variant="outline"
+              className="gap-2 border-2 border-[#f0a500] py-4 text-sm font-semibold text-[#f0a500] hover:bg-[#fffbf0] sm:py-5 sm:text-base"
+            >
+              <a
+                href={service.formCheckUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                서식 확인
+                <ExternalLink className="h-4 w-4" />
+              </a>
+            </Button>
+          )}
+
+          {/* 법정서식 보기 - 회색 테두리 */}
+          {service.legalFormUrl && (
+            <Button
+              asChild
+              variant="outline"
+              className="gap-2 border-2 border-[#b0bec5] py-4 text-sm font-semibold text-[#607d8b] hover:bg-[#f5f5f5] sm:py-5 sm:text-base"
+            >
+              <a
+                href={service.legalFormUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                법정서식 보기
+                <ExternalLink className="h-4 w-4" />
+              </a>
+            </Button>
+          )}
+        </div>
 
         {/* 11. 참고 고지문 */}
         <Card className="border-[1.5px] border-amber-200 bg-amber-50 p-5 sm:p-6">

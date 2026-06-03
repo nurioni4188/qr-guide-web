@@ -24,6 +24,8 @@ export interface GuideService {
   onlineInfo: string;
   cautions: string;
   onlineLink?: string;
+  formCheckUrl?: string;
+  legalFormUrl?: string;
   disclaimer: string;
 }
 
@@ -93,6 +95,8 @@ export const GUIDES_DATA: Record<string, GuideService> = {
     cautions:
       "산재 승인 여부는 업무관련성, 의학적 소견, 사실관계 확인 등을 종합하여 판단됩니다. 서류가 부족한 경우 추가 제출이 필요할 수 있습니다.",
     onlineLink: "https://total.comwel.or.kr/ui/index.do?task=form&formSEQ=6",
+    formCheckUrl: "https://www.kcomwel.or.kr",
+    legalFormUrl: "https://law.go.kr",
     disclaimer: COMMON_DISCLAIMER,
   },
   "insured-status": {
@@ -149,6 +153,8 @@ export const GUIDES_DATA: Record<string, GuideService> = {
     cautions:
       "고용보험 피보험자격 확인 여부는 실제 근무사실, 임금 지급 내역, 사업장 신고자료 등을 종합하여 판단됩니다.",
     onlineLink: "https://www.work24.go.kr",
+    formCheckUrl: "https://www.work24.go.kr",
+    legalFormUrl: "https://law.go.kr",
     disclaimer: COMMON_DISCLAIMER,
   },
   "employment-insurance-status": {
@@ -197,6 +203,8 @@ export const GUIDES_DATA: Record<string, GuideService> = {
     cautions:
       "고용보험 피보험자격 확인 여부는 실제 근무사실, 임금 지급 내역, 사업장 신고자료 등을 종합하여 판단됩니다.",
     onlineLink: "https://www.work24.go.kr",
+    formCheckUrl: "https://www.work24.go.kr",
+    legalFormUrl: "https://law.go.kr",
     disclaimer: COMMON_DISCLAIMER,
   },
   "certificate": {
@@ -241,6 +249,8 @@ export const GUIDES_DATA: Record<string, GuideService> = {
     cautions:
       "증명서 발급 시간은 신청 방법과 증명서 종류에 따라 다를 수 있습니다.",
     onlineLink: "https://www.comwel.or.kr",
+    formCheckUrl: "https://www.comwel.or.kr",
+    legalFormUrl: "https://law.go.kr",
     disclaimer: COMMON_DISCLAIMER,
   },
   "insurance-premium": {
@@ -281,6 +291,8 @@ export const GUIDES_DATA: Record<string, GuideService> = {
     cautions:
       "보험료 납입 기한을 놓치지 않도록 주의하세요.",
     onlineLink: "https://www.gov.kr",
+    formCheckUrl: "https://www.gov.kr",
+    legalFormUrl: "https://law.go.kr",
     disclaimer: COMMON_DISCLAIMER,
   },
   "online-service": {
@@ -315,6 +327,8 @@ export const GUIDES_DATA: Record<string, GuideService> = {
     cautions:
       "온라인 신청 시 정확한 정보를 입력하세요.",
     onlineLink: "https://www.comwel.or.kr",
+    formCheckUrl: "https://www.comwel.or.kr",
+    legalFormUrl: "https://law.go.kr",
     disclaimer: COMMON_DISCLAIMER,
   },
 };
