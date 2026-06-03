@@ -95,7 +95,7 @@ export const GUIDES_DATA: Record<string, GuideService> = {
     cautions:
       "산재 승인 여부는 업무관련성, 의학적 소견, 사실관계 확인 등을 종합하여 판단됩니다. 서류가 부족한 경우 추가 제출이 필요할 수 있습니다.",
     onlineLink: "https://total.comwel.or.kr/ui/index.do?task=form&formSEQ=6",
-    formCheckUrl: "https://www.kcomwel.or.kr",
+    formCheckUrl: "https://www.comwel.or.kr",
     legalFormUrl: "https://law.go.kr",
     disclaimer: COMMON_DISCLAIMER,
   },
@@ -291,7 +291,7 @@ export const GUIDES_DATA: Record<string, GuideService> = {
     cautions:
       "보험료 납입 기한을 놓치지 않도록 주의하세요.",
     onlineLink: "https://www.gov.kr",
-    formCheckUrl: "https://www.gov.kr",
+    formCheckUrl: "https://www.comwel.or.kr",
     legalFormUrl: "https://law.go.kr",
     disclaimer: COMMON_DISCLAIMER,
   },
