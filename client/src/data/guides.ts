@@ -98,7 +98,7 @@ export const GUIDES_DATA: Record<string, GuideService> = {
     onlineLink: "https://total.comwel.or.kr/ui/index.do?task=form&formSEQ=6",
     formCheckUrl: "https://www.comwel.or.kr",
     legalFormUrl: "https://law.go.kr",
-    aiChatUrl: "https://ips.go.kr/cht/ptl/mair",
+    aiChatUrl: "https://www.ips.go.kr/cht/ptl/main.ndo",
     disclaimer: COMMON_DISCLAIMER,
   },
   "insured-status": {
@@ -157,7 +157,7 @@ export const GUIDES_DATA: Record<string, GuideService> = {
     onlineLink: "https://www.work24.go.kr",
     formCheckUrl: "https://www.work24.go.kr",
     legalFormUrl: "https://law.go.kr",
-    aiChatUrl: "https://ips.go.kr/cht/chatbot",
+    aiChatUrl: "https://www.ips.go.kr/cht/ptl/main.ndo",
     disclaimer: COMMON_DISCLAIMER,
   },
   "employment-insurance-status": {
@@ -208,7 +208,7 @@ export const GUIDES_DATA: Record<string, GuideService> = {
     onlineLink: "https://www.work24.go.kr",
     formCheckUrl: "https://www.work24.go.kr",
     legalFormUrl: "https://law.go.kr",
-    aiChatUrl: "https://ips.go.kr/cht/chatbot",
+    aiChatUrl: "https://www.ips.go.kr/cht/ptl/main.ndo",
     disclaimer: COMMON_DISCLAIMER,
   },
   "certificate": {
@@ -255,7 +255,7 @@ export const GUIDES_DATA: Record<string, GuideService> = {
     onlineLink: "https://www.comwel.or.kr",
     formCheckUrl: "https://www.comwel.or.kr",
     legalFormUrl: "https://law.go.kr",
-    aiChatUrl: "https://ips.go.kr/cht/chatbot",
+    aiChatUrl: "https://www.ips.go.kr/cht/ptl/main.ndo",
     disclaimer: COMMON_DISCLAIMER,
   },
   "insurance-premium": {
@@ -298,7 +298,7 @@ export const GUIDES_DATA: Record<string, GuideService> = {
     onlineLink: "https://www.gov.kr",
     formCheckUrl: "https://www.comwel.or.kr",
     legalFormUrl: "https://law.go.kr",
-    aiChatUrl: "https://ips.go.kr/cht/chatbot",
+    aiChatUrl: "https://www.ips.go.kr/cht/ptl/main.ndo",
     disclaimer: COMMON_DISCLAIMER,
   },
   "online-service": {
@@ -335,7 +335,7 @@ export const GUIDES_DATA: Record<string, GuideService> = {
     onlineLink: "https://www.comwel.or.kr",
     formCheckUrl: "https://www.comwel.or.kr",
     legalFormUrl: "https://law.go.kr",
-    aiChatUrl: "https://ips.go.kr/cht/chatbot",
+    aiChatUrl: "https://www.ips.go.kr/cht/ptl/main.ndo",
     disclaimer: COMMON_DISCLAIMER,
   },
 };
