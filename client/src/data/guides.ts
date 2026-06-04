@@ -1,5 +1,5 @@
 const COMMON_DISCLAIMER =
-  "본 안내는 방문 전 준비를 돕기 위한 참고용입니다. 실제 접수 가능 여부와 추가 제출서류는 개별 사안에 따라 달라질 수 있으므로 최종 확인은 근로복지공단, 고용·산재보험 토탈서비스, 고용24, 정부24 등 공식 경로를 이용해 주세요.";
+  "본 안내는 방문 전 준비를 돕기 위한 참고자료입니다. 실제 접수 가능 여부, 승인 여부, 추가 제출서류는 개별 사안 및 담당기관의 확인 결과에 따라 달라질 수 있습니다. 최종 확인은 근로복지공단, 고용·산재보험 토탈서비스, 고용24, 정부24 등 공식 경로를 이용해 주세요.";
 
 export interface GuideService {
   id: string;
@@ -26,6 +26,7 @@ export interface GuideService {
   onlineLink?: string;
   formCheckUrl?: string;
   legalFormUrl?: string;
+  aiChatUrl?: string;
   disclaimer: string;
 }
 
@@ -97,6 +98,7 @@ export const GUIDES_DATA: Record<string, GuideService> = {
     onlineLink: "https://total.comwel.or.kr/ui/index.do?task=form&formSEQ=6",
     formCheckUrl: "https://www.comwel.or.kr",
     legalFormUrl: "https://law.go.kr",
+    aiChatUrl: "https://ips.go.kr/cht/ptl/mair",
     disclaimer: COMMON_DISCLAIMER,
   },
   "insured-status": {
@@ -155,6 +157,7 @@ export const GUIDES_DATA: Record<string, GuideService> = {
     onlineLink: "https://www.work24.go.kr",
     formCheckUrl: "https://www.work24.go.kr",
     legalFormUrl: "https://law.go.kr",
+    aiChatUrl: "https://ips.go.kr/cht/chatbot",
     disclaimer: COMMON_DISCLAIMER,
   },
   "employment-insurance-status": {
@@ -205,6 +208,7 @@ export const GUIDES_DATA: Record<string, GuideService> = {
     onlineLink: "https://www.work24.go.kr",
     formCheckUrl: "https://www.work24.go.kr",
     legalFormUrl: "https://law.go.kr",
+    aiChatUrl: "https://ips.go.kr/cht/chatbot",
     disclaimer: COMMON_DISCLAIMER,
   },
   "certificate": {
@@ -251,6 +255,7 @@ export const GUIDES_DATA: Record<string, GuideService> = {
     onlineLink: "https://www.comwel.or.kr",
     formCheckUrl: "https://www.comwel.or.kr",
     legalFormUrl: "https://law.go.kr",
+    aiChatUrl: "https://ips.go.kr/cht/chatbot",
     disclaimer: COMMON_DISCLAIMER,
   },
   "insurance-premium": {
@@ -293,6 +298,7 @@ export const GUIDES_DATA: Record<string, GuideService> = {
     onlineLink: "https://www.gov.kr",
     formCheckUrl: "https://www.comwel.or.kr",
     legalFormUrl: "https://law.go.kr",
+    aiChatUrl: "https://ips.go.kr/cht/chatbot",
     disclaimer: COMMON_DISCLAIMER,
   },
   "online-service": {
@@ -329,6 +335,7 @@ export const GUIDES_DATA: Record<string, GuideService> = {
     onlineLink: "https://www.comwel.or.kr",
     formCheckUrl: "https://www.comwel.or.kr",
     legalFormUrl: "https://law.go.kr",
+    aiChatUrl: "https://ips.go.kr/cht/chatbot",
     disclaimer: COMMON_DISCLAIMER,
   },
 };

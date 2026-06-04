@@ -282,16 +282,16 @@ export default function ServiceDetail({ params }: ServiceDetailProps) {
             준비서류 확인 후 추가 궁금한 점이 있으신가요?
           </p>
           <a
-            href="https://www.comwel.or.kr"
+            href={service.aiChatUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="block w-full rounded-[12px] bg-[#0057B8] px-6 py-4 text-center font-bold text-white transition-colors duration-200 hover:bg-[#003087] active:bg-[#002560]"
           >
-            💬 AI 상담으로 더 자세히 알아보기
+            💬 추가 질문 AI 상담하기
           </a>
           <p className="mt-3 text-center text-xs text-[#999]">
-            근로복지공단 공식 홈페이지로 이동합니다.<br />
-            개인정보는 공단 공식 채널에서만 입력하세요.
+            공식 상담 페이지로 이동합니다.<br />
+            개인정보는 공식 채널에서만 입력해 주세요.
           </p>
         </div>
 
