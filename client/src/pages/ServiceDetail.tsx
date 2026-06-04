@@ -276,8 +276,27 @@ export default function ServiceDetail({ params }: ServiceDetailProps) {
           )}
         </div>
 
+        {/* AI Consultation Button */}
+        <div className="border-t border-[#e8ecf2] pt-8">
+          <p className="mb-3 text-center text-xs text-[#607d8b]">
+            준비서류 확인 후 추가 궁금한 점이 있으신가요?
+          </p>
+          <a
+            href="https://www.comwel.or.kr"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block w-full rounded-[12px] bg-[#0057B8] px-6 py-4 text-center font-bold text-white transition-colors duration-200 hover:bg-[#003087] active:bg-[#002560]"
+          >
+            💬 AI 상담으로 더 자세히 알아보기
+          </a>
+          <p className="mt-3 text-center text-xs text-[#999]">
+            근로복지공단 공식 홈페이지로 이동합니다.<br />
+            개인정보는 공단 공식 채널에서만 입력하세요.
+          </p>
+        </div>
+
         {/* 11. 참고 고지문 */}
-        <Card className="border-[1.5px] border-amber-200 bg-amber-50 p-5 sm:p-6">
+        <Card className="mt-8 border-[1.5px] border-amber-200 bg-amber-50 p-5 sm:p-6">
           <div className="mb-2 text-xs font-bold uppercase tracking-wider text-amber-700">
             📋 참고 고지문
           </div>
